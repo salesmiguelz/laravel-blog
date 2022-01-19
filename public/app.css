@@ -1,3 +1,72 @@
+/* general */
+body{
+    background-color: #FEFCED;
+}
+/* navbar */
 .navbar-custom {
-    background-color: #177485;
+    background-color: #332946;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-custom a{
+    color: #fefced;
+    font-size: 20px;
+}
+
+.navbar-custom a:hover{
+    color: #9b9b99;
+}
+
+.navbar-custom a.active{
+    color: #9b9b99;
+}
+
+.navbar-custom a:focus{
+    color: #646464;
+}
+
+/* home */
+.home-container{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* post card */
+
+.post-card{
+    background-color: white;
+    width: 45vw;
+}
+
+.post-card .img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-card .img-container img{
+    width: 60%;
+    border-radius: 40px;
+    padding: 30px;
+}
+
+.text-container{
+    padding: 10px;
+}
+
+.text-container .post-description{
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.read-more-container a{
+    color: #6AC5C3;
+    font-size: 18px;
+}
+
+.read-more-container a:hover{
+    color: #488584;
 }
