@@ -16,7 +16,6 @@
 <body>
     <x-navbar/>
     <div class="home-container">
-
         <x-post/>
     </div>
 

@@ -25,6 +25,15 @@ body{
 .navbar-custom a:focus{
     color: #646464;
 }
+.nav-logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.nav-logout-username{
+    color: white
+}
 
 /* home */
 .home-container{
