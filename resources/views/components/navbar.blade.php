@@ -20,10 +20,14 @@
          
         </ul>
       </div>
+
+      
+      @if(Auth::check())
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
+            <button class="btn btn-light">Logout</button>
+        </form>
+      @endif
     </div>
 
-    <div class="nav-logout">
-        <p class="nav-logout-username">Hello, {{Auth::user()->name}}</p>
-        <a href="/logout" class="nav-logout-button">Logout <i class="bi bi-arrow-bar-right"></i></a>
-    </div>
   </nav>
