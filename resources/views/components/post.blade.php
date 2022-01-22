@@ -5,9 +5,10 @@
         </div>
 
         <div class="text-container">
-            <h1 class="post-title">MVC - Model View Controller</h1>
-            <p class="post-description">This a post about MVC, a design pattern used by many companies.</p>
+            <h1 class="post-title">{{$title}}</h1>
+            <p class="post-description">{{$description}}</p>
 
+            <p>{{$body}}</p>
             <div class="read-more-container">
                 <a href="">
                     Read More
