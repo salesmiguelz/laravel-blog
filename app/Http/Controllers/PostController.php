@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = User::find(Auth::user()->id)->posts()->get();
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -24,7 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -35,7 +37,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|unique:posts',
+            'body' => 'required',
+            'description' => 'required'
+        ]);
+
+        $data['user_id'] = Auth::user()->id;
+
+        Post::create($data);
+        return redirect()->route('posts.index');
     }
 
     /**

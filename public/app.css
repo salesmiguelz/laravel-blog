@@ -79,3 +79,15 @@ body{
 .read-more-container a:hover{
     color: #488584;
 }
+
+/* */
+.posts-index-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.post-card{
+    margin: 30px 0px;
+}

@@ -18,6 +18,8 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->longText('body');
+
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

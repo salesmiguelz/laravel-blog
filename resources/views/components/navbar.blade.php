@@ -12,6 +12,11 @@
             <a class="nav-link" href="#">Contact</a>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Posts</a>
+          </li>
+
+
           @if(!Auth::check())
               <li class="nav-item">
                 <a class="nav-link" href="/login">Login</a>

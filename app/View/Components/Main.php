@@ -4,23 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Post extends Component
+class Main extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $title;
-    public $description;
-    public $body;
-
-    
-    public function __construct($title, $description, $body)
+    public function __construct()
     {
-        $this->title = $title;
-        $this->description = $description;
-        $this->body = $body;
+        //
     }
 
     /**
@@ -30,6 +23,6 @@ class Post extends Component
      */
     public function render()
     {
-        return view('components.post');
+        return view('components.main');
     }
 }
