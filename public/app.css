@@ -80,7 +80,7 @@ body{
     color: #488584;
 }
 
-/* */
+/* posts-index */
 .posts-index-container{
     display: flex;
     align-items: center;
@@ -90,4 +90,10 @@ body{
 
 .post-card{
     margin: 30px 0px;
+}
+
+.post-actions-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

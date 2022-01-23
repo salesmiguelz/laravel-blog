@@ -5,17 +5,17 @@
             @csrf
             <div class="form-group">
               <label for="exampleInputEmail1">Title</label>
-              <input type="text" class="form-control" id="title" placeholder="Type the post title here" name="title">
+              <input type="text" class="form-control" id="title" placeholder="Type the post title here" name="title" required>
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmail1">Description</label>
-                <input type="text" class="form-control" id="description" placeholder="Type the post description here" name="description">
+                <input type="text" class="form-control" id="description" placeholder="Type the post description here" name="description" required>
               </div>
 
               <div class="form-group">
                 <label for="exampleInputEmail1">Body</label>
-                <input type="text" class="form-control" id="body" placeholder="Type the post title here" name="body">
+                <input type="text" class="form-control" id="body" placeholder="Type the post title here" name="body" required>
               </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

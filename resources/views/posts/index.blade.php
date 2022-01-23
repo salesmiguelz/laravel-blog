@@ -4,9 +4,14 @@
         <a href="{{route('posts.create')}}">Write a post!</a>
     </div>
     <div class="posts-index-container">
-        @foreach($posts as $post)
-            <x-post :title="$post->title" :description="$post->description" :body="$post->body" />
-        @endforeach
+        @if(!$posts->isEmpty())
+            @foreach($posts as $post)
+                <x-post :id="$post->id" :title="$post->title" :description="$post->description" :body="$post->body" :userId="$post->user_id" />
+            @endforeach
+        @else
+            <h1>This user has no posts!</h1>
+        @endif
+        
     </div>
 </x-main>
 

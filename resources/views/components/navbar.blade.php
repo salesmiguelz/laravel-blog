@@ -3,7 +3,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="/posts">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
@@ -12,9 +12,12 @@
             <a class="nav-link" href="#">Contact</a>
           </li>
 
+          @if(Auth::check())
           <li class="nav-item">
-            <a class="nav-link" href="#">My Posts</a>
+            <a class="nav-link" href="/posts/{{Auth::user()->id}}">My Posts</a>
           </li>
+
+          @endif
 
 
           @if(!Auth::check())
