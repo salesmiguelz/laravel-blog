@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -37,14 +38,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->validate([
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'title' => 'required|unique:posts',
             'body' => 'required',
             'description' => 'required'
         ]);
 
-        $data['user_id'] = Auth::user()->id;
+        $img = file_get_contents($data['img']);
+        $fileExtension = $request->file('img')->extension();
+        $fileName = time() . '.' . $fileExtension;
+        Storage::disk('public')->put($fileName, $img);
 
+
+        $data['img'] = $fileName;
+        $data['user_id'] = Auth::user()->id;
         Post::create($data);
         return redirect()->route('posts.index');
     }

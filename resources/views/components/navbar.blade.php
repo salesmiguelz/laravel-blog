@@ -14,7 +14,7 @@
 
           @if(Auth::check())
           <li class="nav-item">
-            <a class="nav-link" href="/posts/{{Auth::user()->id}}">My Posts</a>
+            <a class="nav-link" href="/posts/user/{{Auth::user()->id}}">My Posts</a>
           </li>
 
           @endif

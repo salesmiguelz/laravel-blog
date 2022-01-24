@@ -1,7 +1,7 @@
 <div class="post-card">
     <div class="container-fluid">
         <div class="img-container">
-            <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGhhY2t8ZW58MHx8MHx8&w=1000&q=80" alt="post image">
+            <img src={{asset('storage/' . $imgPath)}} alt="post image">
         </div>
 
         <div class="text-container">
@@ -19,7 +19,7 @@
                 </div>
                 
 
-                @if(Auth::user()->id == $userId)
+                @if(Auth::check() && Auth::user()->id == $userId)
                 <div class="delete-post-container">
                     <form action="{{route('posts.destroy', $id)}}" method="POST">
                         @csrf
