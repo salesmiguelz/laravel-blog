@@ -3,18 +3,11 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/posts">Home</a>
+            <a class="nav-link @if(Route::is('posts.index')) active @endif" aria-current="page" href="/posts">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-
           @if(Auth::check())
           <li class="nav-item">
-            <a class="nav-link" href="/posts/user/{{Auth::user()->id}}">My Posts</a>
+            <a class="nav-link @if(Route::is('postsByUser')) active @endif" href="{{route('postsByUser', Auth::user()->id)}}">My Posts</a>
           </li>
 
           @endif

@@ -77,7 +77,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $post = Post::findOrFail($post->id);
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -89,7 +90,18 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post = Post::find($post->id);
+        $data = $request->all();
+        if($request->img != null){
+            Storage::disk('public')->delete($post->img);
+            $img = file_get_contents($data['img']);
+            $fileExtension = $request->file('img')->extension();
+            $fileName = time() . '.' . $fileExtension;
+            $data['img'] = $fileName;
+            Storage::disk('public')->put($fileName, $img);
+        } 
+        $post->update($data);
+        return redirect()->route('postsByUser', $post->user_id);
     }
 
     /**

@@ -1,7 +1,7 @@
 <div class="post-card">
     <div class="container-fluid">
         <div class="img-container">
-            <img src={{asset('storage/' . $imgPath)}} alt="post image">
+            <img src={{asset('storage/' . $img)}} alt="post image">
         </div>
 
         <div class="text-container">
@@ -20,7 +20,10 @@
                 
 
                 @if(Auth::check() && Auth::user()->id == $userId)
-                <div class="delete-post-container">
+                <div class="methods-post-container">
+                    <a class="btn btn-success"href="{{route('posts.edit', $id)}}">
+                        <i class="bi bi-pencil"></i>
+                    </a>
                     <form action="{{route('posts.destroy', $id)}}" method="POST">
                         @csrf
                         

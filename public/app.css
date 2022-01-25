@@ -97,3 +97,13 @@ body{
     align-items: center;
     justify-content: space-between;
 }
+
+.methods-post-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.methods-post-container a{
+    margin-right: 20px;
+}
