@@ -14,18 +14,16 @@ class Post extends Component
     public $id;
     public $title;
     public $description;
-    public $body;
     public $userId;
     public $img;
 
 
     
-    public function __construct($id, $title, $description, $body, $userId, $img)
+    public function __construct($id, $title, $description, $userId, $img)
     {
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
-        $this->body = $body;
         $this->userId = $userId;
         $this->img = $img;
     }

@@ -7,9 +7,6 @@
         <div class="text-container">
             <h1 class="post-title">{{$title}}</h1>
             <p class="post-description">{{$description}}</p>
-
-            <p>{{$body}}</p>
-
             <div class="post-actions-container">
                 <div class="read-more-container">
                     <a href="">
@@ -21,6 +18,9 @@
 
                 @if(Auth::check() && Auth::user()->id == $userId)
                 <div class="methods-post-container">
+                    <a class="btn btn-primary"href="{{route('posts.show', $id)}}">
+                        <i class="bi bi-eye"></i>
+                    </a>
                     <a class="btn btn-success"href="{{route('posts.edit', $id)}}">
                         <i class="bi bi-pencil"></i>
                     </a>

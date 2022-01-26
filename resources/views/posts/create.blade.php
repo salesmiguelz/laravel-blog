@@ -31,7 +31,7 @@
 
               <div class="form-group">
                 <label for="body">Body</label>
-                <input type="text" class="form-control" id="body" placeholder="Type the post title here" name="body" required>
+                <textarea class="form-control" id="body" placeholder="Type the post body here" name="body" required></textarea>
               </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

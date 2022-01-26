@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\VarDumper\Caster\RedisCaster;
 
 class PostController extends Controller
 {
@@ -64,9 +65,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
-    {
-        //
+    public function show(Post $post){
+        $post = Post::findOrFail($post->id);
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -111,7 +112,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Post $post)
-    {
+    {  
+        Storage::disk('public')->delete($post->img);
         $post->delete();
         return redirect()->back();
     }

@@ -107,3 +107,15 @@ body{
 .methods-post-container a{
     margin-right: 20px;
 }
+
+.posts-show-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.posts-show-container img{
+    width: 500px;
+    margin: 50px 0px;
+}
