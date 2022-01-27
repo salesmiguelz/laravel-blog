@@ -28,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        $post = new Post();
+        return view('posts.create', compact('post'));
     }
 
     /**
@@ -91,6 +92,10 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $data = $request->validate([
+            'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'title' => 'unique:posts',
+        ]);
         $post = Post::find($post->id);
         $data = $request->all();
         if($request->img != null){
