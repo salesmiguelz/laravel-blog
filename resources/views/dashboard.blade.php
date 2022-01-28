@@ -1,26 +1,35 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+<x-main>
+    <x-navbar/>
+    <div class="dashboard-container container" style="margin-top: 50px">
+        <table class="table table-light text-center">
+            <thead>
+              <tr>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <a href="{{route('dashboard.users.index')}}">
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        Users
-                    </div>
-                </a>
+                <th scope="col">Nome</th>
+                <th scope="col">Admin</th>
+                <th scope="col">Quantidade de posts</th>
+              </tr>
+            </thead>
+            <tbody>
 
-                <a href="{{route('dashboard.categories.index')}}">
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        Categories
-                    </div>
-                </a>
-                
-            </div>
-        </div>
+              @foreach($users as $user)
+              <tr>  
+                <td>{{$user->name}}</td>
+                <td>
+                    @if($user->isAdmin)
+                        Sim
+                    @else 
+                        Não
+                    @endif
+                </td>
+
+                <td>
+                    {{$user->posts()->count()}}
+                </td>
+              </tr>
+
+             @endforeach
+            </tbody>
+          </table>
     </div>
-</x-app-layout>
+</x-main>

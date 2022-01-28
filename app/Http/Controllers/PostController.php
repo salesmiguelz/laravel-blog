@@ -92,12 +92,15 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $data = $request->validate([
-            'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
-            'title' => 'unique:posts',
-        ]);
         $post = Post::find($post->id);
-        $data = $request->all();
+
+        if($request->title != $post->title){
+            $data = $request->validate([
+                'title' => 'unique:posts',
+            ]);
+        } else{
+            $data = $request->all();
+        }
         if($request->img != null){
             Storage::disk('public')->delete($post->img);
             $img = file_get_contents($data['img']);
