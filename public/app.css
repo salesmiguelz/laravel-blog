@@ -119,3 +119,15 @@ body{
     width: 500px;
     margin: 50px 0px;
 }
+
+/* Dashboard */
+
+.users-action-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.users-action-container a{
+    margin-right: 10px;
+}

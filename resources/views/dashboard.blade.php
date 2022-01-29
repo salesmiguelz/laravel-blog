@@ -8,6 +8,8 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Admin</th>
                 <th scope="col">Quantidade de posts</th>
+                <th scope="col">Ações</th>
+
               </tr>
             </thead>
             <tbody>
@@ -25,6 +27,20 @@
 
                 <td>
                     {{$user->posts()->count()}}
+                </td>
+
+                <td class="users-action-container">
+                  <a class="btn btn-success" href="{{route('users.edit', $user->id)}}">
+                    <i class="bi bi-pencil"></i>
+                  </a>
+
+                  <form action="{{route('users.destroy', $user->id)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger"type="submit">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                  </form> 
                 </td>
               </tr>
 
