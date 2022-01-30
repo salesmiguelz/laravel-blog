@@ -14,7 +14,7 @@
             @method('put')
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" name="name" id="name" class="form-control" value="{{old('name', $user->name)}}">
+              <input type="text" name="name" id="name" class="form-control" value="{{old('name', $user->name)}}" required>
             </div>
 
             <div class="form-group">
@@ -35,7 +35,11 @@
 
               <div class="form-group">
                 <label for="name">Email</label>
-                <input type="email" name="email" id="email" class="form-control" value="{{old('email', $user->email)}}">
+                <input type="email" name="email" id="email" class="form-control" value="{{old('email', $user->email)}}" required>
+              </div>
+
+               <div class="form-group">
+                <label for="name">Password</label>
               </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

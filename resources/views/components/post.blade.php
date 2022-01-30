@@ -16,11 +16,12 @@
                 </div>
                 
 
-                @if(Auth::check() && Auth::user()->id == $userId)
+                
                 <div class="methods-post-container">
                     <a class="btn btn-primary"href="{{route('posts.show', $id)}}">
                         <i class="bi bi-eye"></i>
                     </a>
+                    @can('view', Auth::user(), $userId)
                     <a class="btn btn-success"href="{{route('posts.edit', $id)}}">
                         <i class="bi bi-pencil"></i>
                     </a>
@@ -32,9 +33,9 @@
                             <i class="bi bi-trash"></i>
                         </button>
                     </form>
+                    @endcan
                 </div>
 
-                @endif
             </div>
         </div>
        

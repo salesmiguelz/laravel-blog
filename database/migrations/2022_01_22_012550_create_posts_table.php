@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('description');
             $table->longText('body');
 
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
