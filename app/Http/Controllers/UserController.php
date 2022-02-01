@@ -27,7 +27,6 @@ class UserController extends Controller
     }
 
     public function destroy(User $user){
-        $user->posts()->delete();
         $user->delete();
         return redirect()->route("dashboard");
     }
