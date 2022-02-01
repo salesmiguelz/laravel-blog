@@ -16,16 +16,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function(){
-    return redirect('posts');
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function(){
+        return redirect('posts');
+    });
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+    Route::resource('posts', PostController::class)->middleware(['auth']);
+    Route::get('/posts/user/{user}', [PostController::class, 'postsByUser'])->middleware(['auth'])->name('postsByUser');
+    Route::resource('users', UserController::class)->middleware(['auth']);
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-
-Route::resource('posts', PostController::class);
-Route::get('/posts/user/{user}', [PostController::class, 'postsByUser'])->name('postsByUser');
-
-Route::resource('users', UserController::class);
 
 require __DIR__.'/auth.php';
