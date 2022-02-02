@@ -7,24 +7,31 @@
         <div class="text-container">
             <h1 class="post-title">{{$title}}</h1>
             <p class="post-description">{{$description}}</p>
+            <div class="author-container">
+                <p>Written by: <b>{{$author}}</b></p>
+            </div>
             <div class="post-actions-container">
+               
                 <div class="read-more-container">
                     <a href="">
                         Read More
                         <i class="bi bi-arrow-bar-right"></i>
                     </a>
-                </div>
-                
 
+                </div>
+
+                
                 
                 <div class="methods-post-container">
                     <a class="btn btn-primary"href="{{route('posts.show', $id)}}">
                         <i class="bi bi-eye"></i>
                     </a>
-                    @can('view', Auth::user(), $userId)
+
+                    @if($canUpdate)
                     <a class="btn btn-success"href="{{route('posts.edit', $id)}}">
                         <i class="bi bi-pencil"></i>
                     </a>
+                    @endif
                     <form action="{{route('posts.destroy', $id)}}" method="POST">
                         @csrf
                         
@@ -33,7 +40,6 @@
                             <i class="bi bi-trash"></i>
                         </button>
                     </form>
-                    @endcan
                 </div>
 
             </div>
