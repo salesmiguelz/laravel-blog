@@ -11,25 +11,13 @@ class Post extends Component
      *
      * @return void
      */
-    public $id;
-    public $title;
-    public $description;
-    public $userId;
-    public $img;
-    public $author;
-    public $canUpdate;
+    public $post;
 
 
     
-    public function __construct($id, $title, $description, $userId, $img, $author, $canUpdate)
+    public function __construct($post)
     {
-        $this->id = $id;
-        $this->title = $title;
-        $this->description = $description;
-        $this->userId = $userId;
-        $this->img = $img;
-        $this->author = $author;
-        $this->canUpdate = $canUpdate;
+        $this->post = $post;
     }
 
     /**

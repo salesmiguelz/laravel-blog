@@ -8,8 +8,10 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Admin</th>
                 <th scope="col">Quantidade de posts</th>
-                <th scope="col">Ações</th>
 
+                @canany(['update', 'delete'], App\Models\User::class)
+                  <th scope="col">Ações</th>
+                @endcanany
               </tr>
             </thead>
             <tbody>
@@ -29,11 +31,14 @@
                     {{$user->posts()->count()}}
                 </td>
 
+                @can('update', App\Models\User::class)
                 <td class="users-action-container">
                   <a class="btn btn-success" href="{{route('users.edit', $user->id)}}">
                     <i class="bi bi-pencil"></i>
                   </a>
+                @endcan
 
+                @can('delete', App\Models\User::class)
                   <form action="{{route('users.destroy', $user->id)}}" method="POST">
                     @csrf
                     @method('DELETE')
@@ -42,6 +47,7 @@
                     </button>
                   </form> 
                 </td>
+                @endcan
               </tr>
 
              @endforeach

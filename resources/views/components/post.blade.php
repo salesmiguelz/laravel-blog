@@ -1,14 +1,14 @@
 <div class="post-card">
     <div class="container-fluid">
         <div class="img-container">
-            <img src={{asset('storage/' . $img)}} alt="post image">
+            <img src={{asset('storage/' . $post->img)}} alt="post image">
         </div>
 
         <div class="text-container">
-            <h1 class="post-title">{{$title}}</h1>
-            <p class="post-description">{{$description}}</p>
+            <h1 class="post-title">{{$post->title}}</h1>
+            <p class="post-description">{{$post->description}}</p>
             <div class="author-container">
-                <p>Written by: <b>{{$author}}</b></p>
+                <p>Written by: <b>{{$post->user->name}}</b></p>
             </div>
             <div class="post-actions-container">
                
@@ -23,16 +23,18 @@
                 
                 
                 <div class="methods-post-container">
-                    <a class="btn btn-primary"href="{{route('posts.show', $id)}}">
-                        <i class="bi bi-eye"></i>
-                    </a>
+                        <a class="btn btn-primary"href="{{route('posts.show', $post->id)}}">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                    
+                    @can('update', $post)
+                        <a class="btn btn-success"href="{{route('posts.edit', $post->id)}}">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                    @endcan
 
-                    @if($canUpdate)
-                    <a class="btn btn-success"href="{{route('posts.edit', $id)}}">
-                        <i class="bi bi-pencil"></i>
-                    </a>
-                    @endif
-                    <form action="{{route('posts.destroy', $id)}}" method="POST">
+                    @can('destroy', $post)
+                    <form action="{{route('posts.destroy', $post->id)}}" method="POST">
                         @csrf
                         
                         @method('DELETE')
@@ -40,6 +42,7 @@
                             <i class="bi bi-trash"></i>
                         </button>
                     </form>
+                    @endcan
                 </div>
 
             </div>

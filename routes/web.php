@@ -22,10 +22,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', function(){
         return redirect('posts');
     });
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
-    Route::resource('posts', PostController::class)->middleware(['auth']);
-    Route::get('/posts/user/{user}', [PostController::class, 'postsByUser'])->middleware(['auth'])->name('postsByUser');
-    Route::resource('users', UserController::class)->middleware(['auth']);
+    Route::resource('posts', PostController::class);
+    Route::get('/posts/user/{user}', [PostController::class, 'postsByUser'])->name('postsByUser');
+
+    
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('admin');
+    Route::resource('/dashboard/users', UserController::class)->middleware('admin');
 });
 
 
