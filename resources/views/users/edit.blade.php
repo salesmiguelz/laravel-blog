@@ -8,8 +8,8 @@
             </strong>
         </div>
     @endif
-    <div class="posts-create-container container">
-        <form method="POST" action="{{route('users.update', $user->id)}}" enctype="multipart/form-data" class="post-form">
+    <div class="user-form-container container">
+        <form method="POST" action="{{route('users.update', $user->id)}}" enctype="multipart/form-data" class="user-form">
             @csrf
             @method('put')
             <div class="form-group">
@@ -42,7 +42,7 @@
                 <label for="name">Password</label>
               </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-light">Submit</button>
           </form>
     </div>
 </x-main>

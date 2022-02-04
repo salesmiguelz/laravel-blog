@@ -1,7 +1,7 @@
 <x-main>
     <x-navbar/>
     <div class="dashboard-container container" style="margin-top: 50px">
-        <table class="table table-light text-center">
+        <table class="table text-center table-dashboard">
             <thead>
               <tr>
 

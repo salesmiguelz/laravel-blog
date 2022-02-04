@@ -1,10 +1,10 @@
 /* general */
 body{
-    background-color: #FEFCED;
+    background-color: #181818;
 }
 /* navbar */
 .navbar-custom {
-    background-color: #332946;
+    background-color: #212121;
     display: flex;
     justify-content: space-between;
 }
@@ -46,8 +46,10 @@ body{
 /* post card */
 
 .post-card{
-    background-color: white;
     width: 45vw;
+    background-color: #2e2e2e;
+    color: white;
+    border-radius: 30px;
 }
 
 .post-card .img-container{
@@ -108,7 +110,10 @@ body{
     margin-right: 20px;
 }
 
+/* posts show */
 .posts-show-container{
+    margin-top: 30px;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,8 +125,48 @@ body{
     margin: 50px 0px;
 }
 
+/* Post form */
+
+.post-form-container{
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.post-form{
+    margin: 30px 0px;
+    width: 80%;
+}
+
+.post-form label{
+    color: white;
+    margin-top: 20px;
+
+}
+
+.post-form input, 
+.post-form textarea{
+    margin-top: 10px;
+    background-color: #2e2e2e;
+    color: white;
+}
+
+.post-form input::placeholder,
+.post-form textarea::placeholder{
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+.post-form textarea{
+    margin-bottom: 30px;
+}
 /* Dashboard */
 
+.dashboard-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .users-action-container{
     display: flex;
     align-items: center;
@@ -131,3 +176,42 @@ body{
 .users-action-container a{
     margin-right: 10px;
 }
+
+.table-dashboard{
+    background-color: #2e2e2e;
+    color: white;
+    width: 80%;
+}
+
+/* edit user */
+
+.user-form-container{
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-form{
+    margin: 30px 0px;
+    width: 80%;
+}
+.user-form label{
+    color: white;
+    margin-top: 5px;
+}
+.user-form label:not(.form-check-label){
+    margin-top: 20px;
+}
+
+.user-form input{
+    margin-top: 10px;
+    background-color: #2e2e2e;
+    color: white !important;
+}
+
+.user-form input::placeholder,
+.user-form textarea::placeholder{
+    color: white;
+    opacity: 1; /* Firefox */
+}
+

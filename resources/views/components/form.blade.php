@@ -8,7 +8,7 @@
             </strong>
         </div>
     @endif
-    <div class="posts-create-container container">
+    <div class="post-form-container container">
         <form method="POST" action="{{route('posts.'. $method, $post->id)}}" enctype="multipart/form-data" class="post-form">
             @csrf
             @if($method == 'update')
@@ -34,7 +34,7 @@
                 <textarea class="form-control" id="body" placeholder="Type the post body here" name="body" required>{{old('body', $post->body)}}</textarea>
               </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-light">Submit</button>
           </form>
     </div>
 </x-main>
