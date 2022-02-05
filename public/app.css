@@ -144,6 +144,7 @@ body{
 
 }
 
+
 .post-form input, 
 .post-form textarea{
     margin-top: 10px;
@@ -159,6 +160,12 @@ body{
 
 .post-form textarea{
     margin-bottom: 30px;
+}
+
+.post-form input:focus,
+.post-form textarea:focus{
+    background-color: #2e2e2e;
+    color: white;
 }
 /* Dashboard */
 
@@ -213,5 +220,11 @@ body{
 .user-form textarea::placeholder{
     color: white;
     opacity: 1; /* Firefox */
+}
+
+.user-form input:focus,
+.user-form textarea:focus{
+    background-color: #2e2e2e;
+    color: white;
 }
 

@@ -22,6 +22,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', function(){
         return redirect('posts');
     });
+    
+    Route::get('/post/{slug}', [PostController::class, 'show']);
     Route::resource('posts', PostController::class);
     Route::get('/posts/user/{user}', [PostController::class, 'postsByUser'])->name('postsByUser');
 

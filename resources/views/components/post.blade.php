@@ -23,7 +23,7 @@
                 
                 
                 <div class="methods-post-container">
-                        <a class="btn btn-primary"href="{{route('posts.show', $post->id)}}">
+                        <a class="btn btn-primary"href="/post/{{$post->slug}}">
                             <i class="bi bi-eye"></i>
                         </a>
                     

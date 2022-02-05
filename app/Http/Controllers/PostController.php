@@ -66,8 +66,8 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post){
-        $post = Post::findOrFail($post->id);
+    public function show($slug){
+        $post = Post::where('slug', $slug)->firstOrFail();
         return view('posts.show', compact('post'));
     }
 
