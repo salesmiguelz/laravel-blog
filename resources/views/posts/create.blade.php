@@ -1,1 +1,1 @@
-<x-form method="store" :post="$post"/>
+<x-post-form method="store" :post="$post"/>

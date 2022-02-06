@@ -34,7 +34,7 @@
                 <textarea class="form-control" id="body" placeholder="Type the post body here" name="body" required>{{old('body', $post->body)}}</textarea>
               </div>
 
-            <button type="submit" class="btn btn-light">Submit</button>
+            <button type="submit" class="btn btn-light">Create</button>
           </form>
     </div>
 </x-main>

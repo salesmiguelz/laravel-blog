@@ -1,1 +1,1 @@
-<x-form method="update" :post="$post"/>
+<x-post-form method="update" :post="$post"/>

@@ -4,14 +4,20 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Form extends Component
+class CategoryForm extends Component
 {
+    /**
+ * Create a new component instance.
+     *
+     * @return void
+     */
+
     public $method;
-    public $post;
-    public function __construct($method, $post)
+    public $category;
+    public function __construct($method, $category)
     {
         $this->method = $method;
-        $this->post = $post;
+        $this->category = $category;
     }
 
     /**
@@ -21,6 +27,6 @@ class Form extends Component
      */
     public function render()
     {
-        return view('components.form');
+        return view('components.category-form');
     }
 }

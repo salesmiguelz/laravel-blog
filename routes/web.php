@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoriesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +26,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('posts', PostController::class);
     Route::get('/posts/user/{user}', [PostController::class, 'postsByUser'])->name('postsByUser');
 
-    
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('admin');
-    Route::resource('/dashboard/users', UserController::class)->middleware('admin');
+    Route::resource('/users', UserController::class)->middleware('admin');
+    Route::resource('/categories', CategoriesController::class)->middleware('admin');
 });
 
 

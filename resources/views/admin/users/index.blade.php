@@ -4,13 +4,13 @@
         <table class="table text-center table-dashboard">
             <thead>
               <tr>
-
-                <th scope="col">Nome</th>
+                
+                <th scope="col">Name</th>
                 <th scope="col">Admin</th>
-                <th scope="col">Quantidade de posts</th>
+                <th scope="col">Number of posts</th>
 
                 @canany(['update', 'delete'], App\Models\User::class)
-                  <th scope="col">Ações</th>
+                  <th scope="col">Actions</th>
                 @endcanany
               </tr>
             </thead>
@@ -21,9 +21,9 @@
                 <td>{{$user->name}}</td>
                 <td>
                     @if($user->isAdmin)
-                        Sim
+                        Yes
                     @else 
-                        Não
+                        No
                     @endif
                 </td>
 

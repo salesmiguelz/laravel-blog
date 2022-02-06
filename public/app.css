@@ -167,28 +167,7 @@ body{
     background-color: #2e2e2e;
     color: white;
 }
-/* Dashboard */
 
-.dashboard-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.users-action-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.users-action-container a{
-    margin-right: 10px;
-}
-
-.table-dashboard{
-    background-color: #2e2e2e;
-    color: white;
-    width: 80%;
-}
 
 /* edit user */
 
@@ -224,6 +203,79 @@ body{
 
 .user-form input:focus,
 .user-form textarea:focus{
+    background-color: #2e2e2e;
+    color: white;
+}
+
+/* Dashboard */
+
+.dashboard-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card-dashboard{
+    background-color: red;
+
+}
+.users-action-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.users-action-container a{
+    margin-right: 10px;
+}
+
+.table-dashboard{
+    background-color: #2e2e2e;
+    color: white;
+    width: 80%;
+}
+
+.categories-action-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.categories-action-container a{
+    margin-right: 10px;
+}
+
+.category-form-container{
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.category-form{
+    margin: 30px 0px;
+    width: 80%;
+}
+
+.category-form label{
+    color: white;
+    margin-top: 20px;
+
+}
+
+.category-form input{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #2e2e2e;
+    color: white;
+}
+
+.category-form input::placeholder{
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+.category-form input:focus{
     background-color: #2e2e2e;
     color: white;
 }

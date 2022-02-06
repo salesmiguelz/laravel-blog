@@ -17,9 +17,17 @@
 
          @if(Auth::user()->isAdmin)
             <li class="nav-item">
-              <a class="nav-link @if(Route::is('dashboard')) active @endif" href="{{route('dashboard')}}">Dashboard</a>
+              <a class="nav-link @if(Route::is('users.index')) active @endif" href="{{route('users.index')}}">Users</a>
             </li>
          @endif
+
+         @if(Auth::user()->isAdmin)
+         <li class="nav-item">
+           <a class="nav-link @if(Route::is('categories.index')) active @endif" href="{{route('categories.index')}}">Categories</a>
+         </li>
+        @endif
+
+
          @else
               <li class="nav-item">
                 <a class="nav-link" href="/login">Login</a>

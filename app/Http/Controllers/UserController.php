@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function index(){
+        $users = User::all();
+        return view('admin.users.index', compact('users'));
+    }
     public function edit(User $user){
-        return view('users.edit', compact('user'));
+        return view('admin.users.edit', compact('user'));
     }
 
     public function update(Request $request, User $user){
@@ -23,11 +27,11 @@ class UserController extends Controller
         unset($data['admin']);
         $user->update($data);
 
-        return redirect()->route("dashboard");
+        return redirect()->route("users.index");
     }
 
     public function destroy(User $user){
         $user->delete();
-        return redirect()->route("dashboard");
+        return redirect()->route("users.index");
     }
 }
