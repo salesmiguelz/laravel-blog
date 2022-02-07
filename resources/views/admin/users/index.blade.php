@@ -5,7 +5,7 @@
             <thead>
               <tr>
                 
-                <th scope="col">Name</th>
+                <th scope="col" >Name</th>
                 <th scope="col">Admin</th>
                 <th scope="col">Number of posts</th>
 

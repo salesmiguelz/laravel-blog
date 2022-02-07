@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\VarDumper\Caster\RedisCaster;
@@ -29,7 +30,8 @@ class PostController extends Controller
     public function create()
     {
         $post = new Post();
-        return view('posts.create', compact('post'));
+        $categories = Category::all();
+        return view('posts.create', compact('post', 'categories'));
     }
 
     /**
@@ -40,23 +42,28 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $data = $request->validate([
             'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'title' => 'required|unique:posts',
             'body' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'categories' => 'required|array'
         ]);
-
         $img = file_get_contents($data['img']);
         $fileExtension = $request->file('img')->extension();
         $fileName = time() . '.' . $fileExtension;
         Storage::disk('public')->put($fileName, $img);
 
-
         $data['img'] = $fileName;
         $data['user_id'] = Auth::user()->id;
-        Post::create($data);
+        $categories = $data['categories'];
+        unset($data['categories']);
+        $post = Post::create($data);
+        foreach($categories as $category){
+            $post->categories()->attach($category);
+        }
+
+        $post->save();
         return redirect()->route('posts.index');
     }
 
@@ -96,10 +103,18 @@ class PostController extends Controller
 
         if($request->title != $post->title){
             $data = $request->validate([
-                'title' => 'unique:posts',
+                'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
+                'title' => 'required|unique:posts',
+                'body' => 'required',
+                'description' => 'required'
             ]);
         } else{
-            $data = $request->all();
+            $data = $request->validate([
+                'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
+                'title' => 'required',
+                'body' => 'required',
+                'description' => 'required'
+            ]);
         }
         if($request->img != null){
             Storage::disk('public')->delete($post->img);

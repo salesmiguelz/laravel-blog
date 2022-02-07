@@ -146,7 +146,8 @@ body{
 
 
 .post-form input, 
-.post-form textarea{
+.post-form textarea,
+.post-form select{
     margin-top: 10px;
     background-color: #2e2e2e;
     color: white;
@@ -158,7 +159,7 @@ body{
     opacity: 1; /* Firefox */
 }
 
-.post-form textarea{
+.post-form select{
     margin-bottom: 30px;
 }
 

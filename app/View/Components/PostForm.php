@@ -13,10 +13,12 @@ class PostForm extends Component
      */
     public $method;
     public $post;
-    public function __construct($method, $post)
+    public $categories;
+    public function __construct($method, $post, $categories)
     {
         $this->method = $method;
         $this->post = $post;
+        $this->categories = $categories;
     }
 
     /**

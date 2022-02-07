@@ -46,17 +46,6 @@ class CategoriesController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -64,7 +53,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -75,8 +65,20 @@ class CategoriesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {  
+        $category = Category::findOrFail($id);
+        if($request->name != $category->name){
+            $data = $request->validate([
+                'name' => 'required|unique:categories',
+            ]);
+        } else{
+            $data = $request->validate([
+                'name' => 'required',
+            ]);;
+        }
+
+        $category->update($data);
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -87,6 +89,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->route('categories.index');
     }
 }
