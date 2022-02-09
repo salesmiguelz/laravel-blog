@@ -7,6 +7,11 @@
         <div class="text-container">
             <h1 class="post-title">{{$post->title}}</h1>
             <p class="post-description">{{$post->description}}</p>
+            <div class="post-categories">
+                @foreach($post->categories as $category)
+                <p class="btn " style="background-color: {{$category->color}}; color: white">{{$category->name}}</p>
+                @endforeach
+            </div>
             <div class="author-container">
                 <p>Written by: <b>{{$post->user->name}}</b></p>
             </div>

@@ -16,6 +16,11 @@
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name" placeholder="Type the category name here" name="name" value="{{old('name', $category->name)}}" required>
         </div>
+
+        <div class="form-group">
+          <label for="color">Color</label>
+          <input type="color" class="form-control" id="color" name="color" value="{{old('name', $category->color)}}" required>
+        </div>
         <button type="submit" class="btn btn-light">
           @if($method == 'store')
           Create

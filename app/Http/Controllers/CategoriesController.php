@@ -39,6 +39,7 @@ class CategoriesController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|unique:categories|max:30',
+            'color' => 'required'
         ]);
 
         Category::create($data);
@@ -70,10 +71,13 @@ class CategoriesController extends Controller
         if($request->name != $category->name){
             $data = $request->validate([
                 'name' => 'required|unique:categories',
+                'color' => 'required'
+
             ]);
         } else{
             $data = $request->validate([
                 'name' => 'required',
+                'color' => 'required'
             ]);;
         }
 

@@ -59,9 +59,7 @@ class PostController extends Controller
         $categories = $data['categories'];
         unset($data['categories']);
         $post = Post::create($data);
-        foreach($categories as $category){
-            $post->categories()->attach($category);
-        }
+        $post->categories()->attach($categories);
 
         $post->save();
         return redirect()->route('posts.index');
@@ -87,7 +85,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $post = Post::findOrFail($post->id);
-        return view('posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -106,14 +105,16 @@ class PostController extends Controller
                 'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
                 'title' => 'required|unique:posts',
                 'body' => 'required',
-                'description' => 'required'
+                'description' => 'required',
+                'categories' => 'required|array'
             ]);
         } else{
             $data = $request->validate([
                 'img' => 'image|mimes:jpeg,png,jpg,gif,svg',
                 'title' => 'required',
                 'body' => 'required',
-                'description' => 'required'
+                'description' => 'required',
+                'categories' => 'required|array'
             ]);
         }
         if($request->img != null){
@@ -123,7 +124,12 @@ class PostController extends Controller
             $fileName = time() . '.' . $fileExtension;
             $data['img'] = $fileName;
             Storage::disk('public')->put($fileName, $img);
-        } 
+        }
+
+        $categories = $data['categories'];
+        unset($data['categories']);
+        $post->categories()->sync($categories);
+
         $post->update($data);
         return redirect()->route('postsByUser', $post->user_id);
     }
