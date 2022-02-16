@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class Posts extends Component
 {
+    public $user_id;
     public $searchQuery;
 
     public function mount(){
@@ -14,9 +15,16 @@ class Posts extends Component
     }
     public function render()
     {
-        $posts = Post::when($this->searchQuery != '', function ($query){
-            $query->where('title', 'like', '%'.$this->searchQuery.'%');
-        })->get();
+        if($this->user_id != NULL){
+            $posts = Post::when($this->searchQuery != '', function ($query){
+                $query->where('title', 'like', '%'.$this->searchQuery.'%');
+            })->where('user_id', $this->user_id)->get();
+          
+        } else{
+            $posts = Post::when($this->searchQuery != '', function ($query){
+                $query->where('title', 'like', '%'.$this->searchQuery.'%');
+            })->get();
+        }
 
         return view('livewire.posts', [
             'posts' => $posts
