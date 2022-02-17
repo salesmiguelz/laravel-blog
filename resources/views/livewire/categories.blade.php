@@ -23,7 +23,7 @@
             <a class="btn btn-success" href="{{route('categories.edit', $category->id)}}">
                 <i class="bi bi-pencil"></i>
             </a>
-            <a onclick="return confirm('Are you sure?') || event.stopImediatePropagation()" wire:click="deleteCategory('{{$category->id}}')" class="btn btn-danger">
+            <a onclick="return confirm('Are you sure?') || event.stopImmediatePropagation();" wire:click="deleteCategory('{{$category->id}}')" class="btn btn-danger">
                 <i class="bi bi-trash"></i>
             </a>
             </form> 
